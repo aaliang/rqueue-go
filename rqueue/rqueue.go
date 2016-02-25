@@ -49,8 +49,6 @@ func (r *RQueue) Notify(topic string, message string) {
 	binary.Write(buf, binary.BigEndian, topicSlice)
 	binary.Write(buf, binary.BigEndian, messageSlice)
 
-	fmt.Println(buf.Bytes())
-
 	err := binary.Write(r.connection, binary.LittleEndian, buf.Bytes())
 	if err != nil {
 		log.Fatal(err)
